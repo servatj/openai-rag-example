@@ -4,7 +4,9 @@ A Retrieval-Augmented Generation (RAG) system for querying product documentation
 
 ## Architecture (whiteboard)
 
-Open the diagram here: `docs/whiteboard.svg`
+![Product RAG whiteboard diagram](docs/whiteboard.svg)
+
+If your Markdown renderer blocks SVGs, open it directly: [docs/whiteboard.svg](docs/whiteboard.svg)
 
 ## What is this?
 
