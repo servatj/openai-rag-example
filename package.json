@@ -1,0 +1,25 @@
+{
+  "name": "product-rag",
+  "version": "1.0.0",
+  "description": "RAG system for querying product documentation using OpenAI embeddings",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "ask": "tsx src/cli.ts"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "openai": "^6.15.0",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
