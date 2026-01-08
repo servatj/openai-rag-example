@@ -8,6 +8,13 @@ A Retrieval-Augmented Generation (RAG) system for querying product documentation
 
 If your Markdown renderer blocks SVGs, open it directly: [docs/whiteboard.svg](docs/whiteboard.svg)
 
+## Guardrails
+
+- **Refuse when docs don’t support it**: if retrieval confidence is low, the app returns “I don’t know based on the provided documentation…”
+  - Tune with `RAG_MIN_SIMILARITY` (higher = stricter, default is `0.25`)
+- **Prompt-injection hardened**: retrieved text is treated as untrusted and never followed as instructions
+- **Citations**: answers include which chunk(s) were used
+
 ## What is this?
 
 This project demonstrates a simple RAG pipeline that:
@@ -71,6 +78,25 @@ Query the embedded documentation:
 ```bash
 npm run ask "What is the battery life of the drone?"
 ```
+
+## Web UI (Vite + React)
+
+The browser UI calls a local API server so your OpenAI key stays on the server.
+
+1. Create `.env` in the repo root:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+2. Run both API + UI:
+
+```bash
+npm run dev
+```
+
+- **API**: `http://localhost:8787/api/health`
+- **Web**: `http://localhost:5173`
 
 Example output:
 ```

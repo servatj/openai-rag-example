@@ -17,6 +17,8 @@ async function ingest() {
 
   addVectors(
     embeddings.map((embedding, i) => ({
+      id: `manual_drone.pdf#chunk-${i}`,
+      source: "manual_drone.pdf",
       embedding,
       content: chunks[i],
     }))

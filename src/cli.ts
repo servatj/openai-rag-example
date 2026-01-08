@@ -28,14 +28,22 @@ async function main() {
 
   addVectors(
     embeddings.map((embedding, i) => ({
+      id: `manual_drone.pdf#chunk-${i}`,
+      source: "manual_drone.pdf",
       embedding,
       content: chunks[i],
     }))
   );
 
   console.log("Querying...\n");
-  const answer = await ask(question);
-  console.log("Answer:", answer);
+  const result = await ask(question);
+  console.log("Answer:", result.answer);
+  if (result.citations.length) {
+    console.log("\nCitations:");
+    for (const c of result.citations) {
+      console.log(`- ${c.id} (score: ${c.score.toFixed(3)})`);
+    }
+  }
 }
 
 main();

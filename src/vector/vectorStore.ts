@@ -1,12 +1,22 @@
 type VectorRecord = {
+  id?: string;
   embedding: number[];
   content: string;
+  source?: string;
 };
 
 const store: VectorRecord[] = [];
 
 export function addVectors(vectors: VectorRecord[]) {
   store.push(...vectors);
+}
+
+export function clearVectors() {
+  store.length = 0;
+}
+
+export function getVectorCount() {
+  return store.length;
 }
 
 function cosineSimilarity(a: number[], b: number[]) {
@@ -18,7 +28,7 @@ function cosineSimilarity(a: number[], b: number[]) {
 
 export function search(queryEmbedding: number[], topK = 5) {
   return store
-    .map(item => ({
+    .map((item) => ({
       ...item,
       score: cosineSimilarity(queryEmbedding, item.embedding),
     }))
